@@ -90,6 +90,10 @@ public class JpaInheritance {
             course.addMember(marek);*/
 
             entityManager.getTransaction().commit();
+            entityManager.getTransaction().begin();
+            Coach c = entityManager.find(Coach.class, 1);
+            c.setSalaryPerHour(100);
+            entityManager.getTransaction().commit();
         } finally {
             if (entityManager != null) {
                 entityManager.close();

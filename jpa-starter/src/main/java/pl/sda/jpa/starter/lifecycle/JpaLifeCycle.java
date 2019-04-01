@@ -60,6 +60,7 @@ public class JpaLifeCycle {
             entityManager.persist(javaGda15);
             entityManager.persist(javaGda22);
 
+
             /**
              * commitujemy transakcję nr 1, wszystkie zmiany dotąd niezapisane w bazie muszą być zapisane
              */

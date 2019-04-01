@@ -7,6 +7,7 @@
     <persistence-unit name="pl.sda.jpa.starter">
         <!-- lista klas do mapowania do bazy danych -->
         <class>pl.sda.jpa.starter.basic.CoachEntity</class>
+        <class>pl.sda.jpa.starter.basic.StudentEntity</class>
 
         <!-- domyślnie mechanizmy JPA skanują wszystkie dostępne pakiety i dodają do PU encje które znajdą - ta opcja wyłącza tę funkcjonalność -->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
@@ -18,7 +19,7 @@
             <!-- zobacz komentarz w klasie ConnectionViaDriverManager do DB_URL -->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="48owp9-68e" />
 
             <!-- Uwaga - przy nazwach parametrów specyficznych dla Hibernate dodajemy prefix hibernate. !-->
             <!-- wyświetlamy na konsolę wszystkie zapytania SQL, które wywołuje dla nas Hibernate -->
@@ -39,7 +40,7 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="48owp9-68e" />
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="none" />
@@ -59,7 +60,7 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_relations_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="48owp9-68e" />
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
@@ -78,9 +79,9 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_queries_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hibernate_queries_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="48owp9-68e" />
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
@@ -99,7 +100,26 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_inheritance_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="48owp9-68e" />
+
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="pl.sda.jpa.starter.school">
+        <class>pl.sda.jpa.starter.inheritance.Coach</class>
+        <class>pl.sda.jpa.starter.inheritance.Student</class>
+        <class>pl.sda.jpa.starter.inheritance.Course</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_inheritance_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="48owp9-68e" />
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />

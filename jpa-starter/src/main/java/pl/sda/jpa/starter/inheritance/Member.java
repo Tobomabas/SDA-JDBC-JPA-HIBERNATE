@@ -3,7 +3,7 @@ package pl.sda.jpa.starter.inheritance;
 import javax.persistence.*;
 
 @MappedSuperclass
-
+//
 //@Entity
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 
@@ -11,6 +11,7 @@ import javax.persistence.*;
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@Table(name = "members")
 //@DiscriminatorColumn(name = "member_type")
+
 
 //@Entity
 //@Table(name = "members")

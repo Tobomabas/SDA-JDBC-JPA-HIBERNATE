@@ -30,6 +30,12 @@ public class HibernateConfiguration {
              */
             Transaction transaction = session.beginTransaction();
 
+
+
+
+
+
+
             Course course = new Course("JavaGda11", "Sopot", Utils.parse("2018-01-01"), Utils.parse("2018-09-01"));
             logger.info("Before: {}", course);
             Integer id = (Integer) session.save(course);
@@ -41,6 +47,12 @@ public class HibernateConfiguration {
             id = (Integer) session.save(course);
             logger.info("Id: {}", id);
             logger.info("After: {}", course);
+
+            Student student = new Student("Tomasz",2,"Kocha Jave", "1.1.1" );
+            session.save(student);
+            student = new Student("Andrzej", 2, "Kocha c++", "2.2.2");
+            session.save(student);
+
 
             /**
              * Krok 4: kończymy transakcję - wszystkie dane powinny być zapisane w bazie

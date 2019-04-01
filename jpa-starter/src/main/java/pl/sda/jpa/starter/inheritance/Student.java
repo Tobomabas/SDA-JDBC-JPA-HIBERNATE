@@ -1,5 +1,6 @@
 package pl.sda.jpa.starter.inheritance;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 

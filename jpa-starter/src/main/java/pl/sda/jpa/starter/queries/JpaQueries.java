@@ -1,16 +1,18 @@
-package pl.sda.jpa.starter.queries;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import pl.sda.jpa.starter.queries.entities.CourseEntity;
-import pl.sda.jpa.starter.queries.entities.CourseInfo;
-import pl.sda.jpa.starter.queries.entities.EntitiesLoader;
-import pl.sda.jpa.starter.queries.entities.StudentEntity;
 
-import javax.persistence.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+        package pl.sda.jpa.starter.queries;
+
+        import org.slf4j.Logger;
+        import org.slf4j.LoggerFactory;
+        import pl.sda.jpa.starter.queries.entities.CourseEntity;
+        import pl.sda.jpa.starter.queries.entities.CourseInfo;
+        import pl.sda.jpa.starter.queries.entities.EntitiesLoader;
+        import pl.sda.jpa.starter.queries.entities.StudentEntity;
+
+        import javax.persistence.*;
+        import java.util.Arrays;
+        import java.util.List;
+        import java.util.stream.Collectors;
 
 public class JpaQueries {
     private static Logger logger = LoggerFactory.getLogger(JpaQueries.class);
@@ -106,6 +108,14 @@ public class JpaQueries {
             resultList = simpleQuery.getResultList();
             printList(resultList);
 
+
+            TypedQuery<StudentsStats> studentsStats = entityManager.createQuery
+                    ("Select new pl.sda.jpa.starter.queries.StudentsStats( s.age,Count (s))" + "From StudentEntity s Group By s.age",StudentsStats.class);
+            List<StudentsStats> studentsStatsList = studentsStats.getResultList();
+            studentsStatsList.forEach(s-> logger.info("StudentsStats: {} " , s));
+
+
+
             entityManager.getTransaction().commit();
         } finally {
             if (entityManager != null) {
@@ -124,7 +134,7 @@ public class JpaQueries {
              *  Inner Join bez wskazywania połączeń (przez wyrażenie ON)
              */
             List<Object[]> resultList = entityManager.createQuery("SELECT s, c FROM StudentEntity s JOIN s.course c", Object[].class)
-                                                     .getResultList();
+                    .getResultList();
             Object[] firstRow = resultList.get(0);
             StudentEntity studentEntity = (StudentEntity) firstRow[0];
             CourseEntity courseEntity = (CourseEntity) firstRow[1];
@@ -135,16 +145,16 @@ public class JpaQueries {
              *  Inner Join z dodatkowym zawężaniem
              */
             List<StudentEntity> students = entityManager.createQuery("SELECT s FROM StudentEntity s JOIN s.course c WHERE c.place = :place", StudentEntity.class)
-                                                        .setParameter("place", "Gdynia")
-                                                        .getResultList();
+                    .setParameter("place", "Gdynia")
+                    .getResultList();
             printList(students);
 
             /**
              *  Left Join z grupowaniem i sortowaniem
              */
             resultList = entityManager.createQuery("SELECT c, COUNT(s) AS students_count FROM CourseEntity c LEFT JOIN c.students s " +
-                                                   "GROUP BY c ORDER BY students_count ASC", Object[].class)
-                                      .getResultList();
+                    "GROUP BY c ORDER BY students_count ASC", Object[].class)
+                    .getResultList();
             firstRow = resultList.get(0);
             courseEntity = (CourseEntity) firstRow[0];
             long studentsCount = (long) firstRow[1];

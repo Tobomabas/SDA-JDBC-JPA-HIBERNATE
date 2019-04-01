@@ -97,10 +97,10 @@ public class StudentEntity {
         return "StudentEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", seat='" + seat + '\'' +
-                ", skills='" + skills + '\'' +
-                ", address=" + address +
-                ", course=" + ((course == null) ? "brak" : course.getName()) +
+//                ", seat='" + seat + '\'' +
+//                ", skills='" + skills + '\'' +
+//                ", address=" + address +
+//                ", course=" + ((course == null) ? "brak" : course.getName()) +
                 '}';
     }
 }

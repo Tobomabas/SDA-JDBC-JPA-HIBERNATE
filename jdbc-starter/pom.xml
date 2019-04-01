@@ -19,6 +19,16 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.11</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
+        </dependency>
+
+
+
         <!-- biblioteka/narzędzie do logowania(zapisywania) komunikatów z poziomu kodu w trakcie działania programu -->
         <dependency>
             <groupId>ch.qos.logback</groupId>

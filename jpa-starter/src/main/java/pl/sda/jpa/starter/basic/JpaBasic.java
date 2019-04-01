@@ -1,5 +1,7 @@
 package pl.sda.jpa.starter.basic;
 
+import pl.sda.jpa.starter.inheritance.Student;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class JpaBasic {
              * Zapisujemy encję w bazie danych
              */
             CoachEntity coachEntity = new CoachEntity("Vlad Mihalcea");
-            entityManager.remove(coachEntity);
+            entityManager.persist(coachEntity);
 
             /**
              * Wyciągamy wszystkie encje zapisane w bazie danych
@@ -39,6 +41,15 @@ public class JpaBasic {
             TypedQuery<CoachEntity> query = entityManager.createQuery("from CoachEntity", CoachEntity.class);
             List<CoachEntity> coaches = query.getResultList();
             System.out.println("coaches = " + coaches);
+
+
+            StudentEntity studentEntity = new StudentEntity("Tomek");
+            StudentEntity studentEntity2 = new StudentEntity("Wojtek");
+            StudentEntity studentEntity3 = new StudentEntity("Michał");
+            entityManager.persist(studentEntity);
+            entityManager.persist(studentEntity2);
+            entityManager.persist(studentEntity3);
+
 
             /**
              * Kończymy (commitujemy) transakcję - wszystkie dane powinny być zapisane w bazie

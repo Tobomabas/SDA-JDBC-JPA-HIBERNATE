@@ -2,6 +2,7 @@ package pl.sda.jpa.starter.relations;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.sda.jpa.starter.inheritance.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -81,11 +82,15 @@ public class JpaRelations {
             SkillEntity skill2 = new SkillEntity("JDBC Master");
             SkillEntity skill3 = new SkillEntity("Hibernate Master");
             StudentEntity student = new StudentEntity("Jan Kowalski");
+            StudentEntity student2 = new StudentEntity("Tomasz Karikczyk");
+            student2.addSkill(skill2);
             student.addSkill(skill1);
             student.addSkill(skill2);
             student.addSkill(skill3);
 
+
             entityManager.persist(student);
+            entityManager.persist(student2);
 
             StudentEntity studentEntity = entityManager.find(StudentEntity.class, 1);
             logger.info("Student: {}", studentEntity);
@@ -101,9 +106,9 @@ public class JpaRelations {
     public static void main(String[] args) {
         JpaRelations jpaQueries = new JpaRelations();
         try {
-            jpaQueries.oneToOne();
+            //jpaQueries.oneToOne();
             //jpaQueries.oneToMany();
-            //jpaQueries.manyToMany();
+            jpaQueries.manyToMany();
         } catch (Exception e) {
             logger.error("", e);
         } finally {

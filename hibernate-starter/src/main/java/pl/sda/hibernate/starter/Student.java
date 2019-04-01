@@ -3,16 +3,17 @@ package pl.sda.hibernate.starter;
 public class Student {
     private Integer id;
     private String name;
-    private Integer courseId;
+    private int courseId;
     private String description;
     private String seat;
 
-    public Student(String name, Integer courseId, String description, String seat) {
+    public Student(String name, int courseId, String description, String seat) {
         this.name = name;
         this.courseId = courseId;
         this.description = description;
         this.seat = seat;
     }
+    public Student (){};
 
     public int getId() {
         return id;
@@ -22,7 +23,7 @@ public class Student {
         return name;
     }
 
-    public Integer getCourseId() {
+    public int getCourseId() {
         return courseId;
     }
 
